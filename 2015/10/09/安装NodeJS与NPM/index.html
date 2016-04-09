@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="node,npm," />
 
 
 
@@ -80,15 +80,16 @@
 
 
 
-<meta name="description" content="专注于Web前端 坚信万物守恒 厚积薄发">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Q中了膝盖's Blog">
-<meta property="og:url" content="http://xiaotian91.github.io/index.html">
+<meta name="description" content="前言今天下午的时候突然心血来潮想把nodejs升级到最新版本, 于是询问度娘找到一个方法, 用npm安装了一个叫n的模块,然后直接在terminal里输入n stable, 然后发现node和npm都不能正常运行了. 我的解决方案是将node和npm完全删除干净, 然后再重新安装, 最后成功解决了问题. 写这篇文总结一下, 以防日后再次遇到相同问题时抓瞎, 也给遇到相同问题的朋友一些帮助.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安装NodeJS与NPM">
+<meta property="og:url" content="http://xiaotian91.github.io/2015/10/09/安装NodeJS与NPM/index.html">
 <meta property="og:site_name" content="Q中了膝盖's Blog">
-<meta property="og:description" content="专注于Web前端 坚信万物守恒 厚积薄发">
+<meta property="og:description" content="前言今天下午的时候突然心血来潮想把nodejs升级到最新版本, 于是询问度娘找到一个方法, 用npm安装了一个叫n的模块,然后直接在terminal里输入n stable, 然后发现node和npm都不能正常运行了. 我的解决方案是将node和npm完全删除干净, 然后再重新安装, 最后成功解决了问题. 写这篇文总结一下, 以防日后再次遇到相同问题时抓瞎, 也给遇到相同问题的朋友一些帮助.">
+<meta property="og:updated_time" content="2016-04-09T07:32:46.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Q中了膝盖's Blog">
-<meta name="twitter:description" content="专注于Web前端 坚信万物守恒 厚积薄发">
+<meta name="twitter:title" content="安装NodeJS与NPM">
+<meta name="twitter:description" content="前言今天下午的时候突然心血来潮想把nodejs升级到最新版本, 于是询问度娘找到一个方法, 用npm安装了一个叫n的模块,然后直接在terminal里输入n stable, 然后发现node和npm都不能正常运行了. 我的解决方案是将node和npm完全删除干净, 然后再重新安装, 最后成功解决了问题. 写这篇文总结一下, 以防日后再次遇到相同问题时抓瞎, 也给遇到相同问题的朋友一些帮助.">
 
 
 
@@ -106,7 +107,7 @@
   };
 </script>
 
-  <title> Q中了膝盖's Blog </title>
+  <title> 安装NodeJS与NPM | Q中了膝盖's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -127,9 +128,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -226,9 +225,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -248,141 +247,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2015/10/23/sublime用法备忘/" itemprop="url">
-                  sublime用法备忘
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-10-23T11:33:40+08:00" content="2015-10-23">
-              2015-10-23
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/前端技术/" itemprop="url" rel="index">
-                    <span itemprop="name">前端技术</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/10/23/sublime用法备忘/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/23/sublime用法备忘/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>这篇文章的目的就在于对平时前端开发中使用<strong>Sublime</strong>的一些常用快捷键，插件，还有设置进行记录，不定期更新。Sublime短小精悍，但是能力无限，丝毫不逊于IDE，用了将近一年了，我现在基本是它的铁粉了。</p>
-<h3 id="一，快捷键"><a href="#一，快捷键" class="headerlink" title="一，快捷键"></a>一，快捷键</h3><ul>
-<li><code>cmd+shift+P</code>打开命令面板（Command Palette）</li>
-<li><code>cmd+D</code> (选中部分文本时) 直接选中下一次出现的该文本</li>
-<li><code>cmd+L</code> 选中一行</li>
-<li><code>cmd+A</code> 全选</li>
-<li><code>fn+F5</code> 排序, 选中CSS属性或JS代码后按F5就可以按字母顺序排序</li>
-<li><code>cmd+T</code>列出所有标签页</li>
-<li><code>ctrl+cmd+F</code> 全屏</li>
-<li><code>cmd+R</code> 文件爬虫 可以列出文档中所有的CSS选择器或HTML元素</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/23/sublime用法备忘/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/10/09/安装NodeJS与NPM/" itemprop="url">
-                  安装NodeJS与NPM
-                </a>
+                安装NodeJS与NPM
               
             
           </h1>
@@ -447,42 +312,82 @@
       
 
       
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天下午的时候突然心血来潮想把nodejs升级到最新版本, 于是询问度娘找到一个方法, 用npm安装了一个叫n的模块,然后直接在terminal里输入<code>n stable</code>, 然后发现node和npm都不能正常运行了. 我的解决方案是将node和npm完全删除干净, 然后再重新安装, 最后成功解决了问题. 写这篇文总结一下, 以防日后再次遇到相同问题时抓瞎, 也给遇到相同问题的朋友一些帮助.<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/09/安装NodeJS与NPM/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天下午的时候突然心血来潮想把nodejs升级到最新版本, 于是询问度娘找到一个方法, 用npm安装了一个叫n的模块,然后直接在terminal里输入<code>n stable</code>, 然后发现node和npm都不能正常运行了. 我的解决方案是将node和npm完全删除干净, 然后再重新安装, 最后成功解决了问题. 写这篇文总结一下, 以防日后再次遇到相同问题时抓瞎, 也给遇到相同问题的朋友一些帮助.<br><a id="more"></a></p>
+<h2 id="完全删除Node和NPM"><a href="#完全删除Node和NPM" class="headerlink" title="完全删除Node和NPM"></a>完全删除Node和NPM</h2><p>要手动删除的东西不少，原则就是将所有<strong>node</strong>, <strong>node_modules</strong>还有<strong>npm</strong>文件夹删光, 这些文件存放的地方如下: </p>
+<ul>
+<li><code>/usr/local/lib</code></li>
+<li><code>/usr/local/include</code></li>
+<li><code>brew uninstall node</code>(如果用brew装的node)</li>
+<li>任何<code>/home</code>下的<code>local</code>或<code>lib</code>或<code>include</code> </li>
+<li><code>/usr/local/bin</code></li>
+<li><code>/usr/bin</code></li>
+<li><code>/usr/local/lib/dtrace/node.d</code></li>
+<li><code>/usr/local/share/man/man1/node.1</code></li>
+<li><code>/usr/local/share/systemtap/tapset/node.stp</code></li>
+</ul>
+<p>删除的命令是<code>sudo rm -rf /dirName/</code><br>这些基本就是全部，不过不排除还有其他，各位可以根据系统给出的错误提示判断还有哪些需要删除.</p>
+<hr>
+<h2 id="重新安装Node和NPM"><a href="#重新安装Node和NPM" class="headerlink" title="重新安装Node和NPM"></a>重新安装Node和NPM</h2><ul>
+<li><a href="http://brew.sh" target="_blank" rel="external">http://brew.sh</a> 是homebrew的官网</li>
+<li><code>brew install node</code>会帮我们下载node，<code>brew link--overwrite node</code>会把node link过去, 这里我还遇到一个错误<code>/usr/local/share/systemtap/tapset is not writable</code>, 这个是权限的问题, 用<code>sudo chmod 775 /dirName/</code>的方法解决</li>
+<li><code>curl -L https://www.npmjs.com/install.sh | sh</code>是安装npm最方便快捷的方法，当然选择重新安装node官网上提供的dmg也是很好的，详情参考<a href="https://github.com/npm/npm" target="_blank" rel="external">官网</a></li>
+</ul>
+<hr>
+<h2 id="升级Node和NPM"><a href="#升级Node和NPM" class="headerlink" title="升级Node和NPM"></a>升级Node和NPM</h2><p><code>sudo npm install -g npm</code>升级npm<br>node更新不频繁, <code>sudo brew upgrade node</code>可以搞定升级</p>
+
       
     </div>
     
     <div>
       
+        
+      
     </div>
 
     <div>
+      
+        
       
     </div>
 
     <footer class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="/tags/node/" rel="tag">#node</a>
+          
+            <a href="/tags/npm/" rel="tag">#npm</a>
+          
+        </div>
       
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/10/23/sublime用法备忘/" rel="prev" title="sublime用法备忘">
+                sublime用法备忘 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
-        <div class="post-eof"></div>
+
+      
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -490,6 +395,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/10/09/安装NodeJS与NPM/"
+           data-title="安装NodeJS与NPM" data-url="http://xiaotian91.github.io/2015/10/09/安装NodeJS与NPM/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -509,8 +422,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -562,6 +484,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完全删除Node和NPM"><span class="nav-number">2.</span> <span class="nav-text">完全删除Node和NPM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重新安装Node和NPM"><span class="nav-number">3.</span> <span class="nav-text">重新安装Node和NPM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#升级Node和NPM"><span class="nav-number">4.</span> <span class="nav-text">升级Node和NPM</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -657,6 +590,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
