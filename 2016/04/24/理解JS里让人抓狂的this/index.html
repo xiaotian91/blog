@@ -64,7 +64,7 @@
 <link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="node,npm," />
+  <meta name="keywords" content="JavaScript,this,call," />
 
 
 
@@ -80,16 +80,22 @@
 
 
 
-<meta name="description" content="前言今天下午的时候突然心血来潮想把nodejs升级到最新版本, 于是询问度娘找到一个方法, 用npm安装了一个叫n的模块,然后直接在terminal里输入n stable, 然后发现node和npm都不能正常运行了. 我的解决方案是将node和npm完全删除干净, 然后再重新安装, 最后成功解决了问题. 写这篇文总结一下, 以防日后再次遇到相同问题时抓瞎, 也给遇到相同问题的朋友一些帮助.">
+<meta name="description" content="前言在阅读各种jQuery插件的过程中经常会看到this和call, 那时我就知道这两个东西对我理解JS很重要。最近发现自己理解的好像还可以了, 但还是有的时候会感觉有点忘, 然后看了慕课上的一篇文章, 上面提到的记忆方法觉得对我很有用, 因此也就胆子大了一点, 写一篇小文, 权当再复习一遍, 同时与君共赏。 原文地址
+需要理解的核心概念
+this的指向问题。调用函数的对象不同, 那么this的指">
 <meta property="og:type" content="article">
-<meta property="og:title" content="安装NodeJS与NPM">
-<meta property="og:url" content="http://xiaotian91.github.io/2015/10/09/安装NodeJS与NPM/index.html">
+<meta property="og:title" content="理解JS里让人抓狂的this">
+<meta property="og:url" content="http://xiaotian91.github.io/2016/04/24/理解JS里让人抓狂的this/index.html">
 <meta property="og:site_name" content="Q中了膝盖's Blog">
-<meta property="og:description" content="前言今天下午的时候突然心血来潮想把nodejs升级到最新版本, 于是询问度娘找到一个方法, 用npm安装了一个叫n的模块,然后直接在terminal里输入n stable, 然后发现node和npm都不能正常运行了. 我的解决方案是将node和npm完全删除干净, 然后再重新安装, 最后成功解决了问题. 写这篇文总结一下, 以防日后再次遇到相同问题时抓瞎, 也给遇到相同问题的朋友一些帮助.">
-<meta property="og:updated_time" content="2016-04-10T11:02:10.000Z">
+<meta property="og:description" content="前言在阅读各种jQuery插件的过程中经常会看到this和call, 那时我就知道这两个东西对我理解JS很重要。最近发现自己理解的好像还可以了, 但还是有的时候会感觉有点忘, 然后看了慕课上的一篇文章, 上面提到的记忆方法觉得对我很有用, 因此也就胆子大了一点, 写一篇小文, 权当再复习一遍, 同时与君共赏。 原文地址
+需要理解的核心概念
+this的指向问题。调用函数的对象不同, 那么this的指">
+<meta property="og:updated_time" content="2016-04-24T07:59:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="安装NodeJS与NPM">
-<meta name="twitter:description" content="前言今天下午的时候突然心血来潮想把nodejs升级到最新版本, 于是询问度娘找到一个方法, 用npm安装了一个叫n的模块,然后直接在terminal里输入n stable, 然后发现node和npm都不能正常运行了. 我的解决方案是将node和npm完全删除干净, 然后再重新安装, 最后成功解决了问题. 写这篇文总结一下, 以防日后再次遇到相同问题时抓瞎, 也给遇到相同问题的朋友一些帮助.">
+<meta name="twitter:title" content="理解JS里让人抓狂的this">
+<meta name="twitter:description" content="前言在阅读各种jQuery插件的过程中经常会看到this和call, 那时我就知道这两个东西对我理解JS很重要。最近发现自己理解的好像还可以了, 但还是有的时候会感觉有点忘, 然后看了慕课上的一篇文章, 上面提到的记忆方法觉得对我很有用, 因此也就胆子大了一点, 写一篇小文, 权当再复习一遍, 同时与君共赏。 原文地址
+需要理解的核心概念
+this的指向问题。调用函数的对象不同, 那么this的指">
 
 
 
@@ -107,7 +113,7 @@
   };
 </script>
 
-  <title> 安装NodeJS与NPM | Q中了膝盖's Blog </title>
+  <title> 理解JS里让人抓狂的this | Q中了膝盖's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -247,7 +253,7 @@
             
             
               
-                安装NodeJS与NPM
+                理解JS里让人抓狂的this
               
             
           </h1>
@@ -259,8 +265,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-10-09T11:26:33+08:00" content="2015-10-09">
-              2015-10-09
+            <time itemprop="dateCreated" datetime="2016-04-24T09:32:30+08:00" content="2016-04-24">
+              2016-04-24
             </time>
           </span>
 
@@ -289,8 +295,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/blog/2015/10/09/安装NodeJS与NPM/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/09/安装NodeJS与NPM/" itemprop="commentsCount"></span>
+                <a href="/blog/2016/04/24/理解JS里让人抓狂的this/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/24/理解JS里让人抓狂的this/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -312,28 +318,86 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天下午的时候突然心血来潮想把nodejs升级到最新版本, 于是询问度娘找到一个方法, 用npm安装了一个叫n的模块,然后直接在terminal里输入<code>n stable</code>, 然后发现node和npm都不能正常运行了. 我的解决方案是将node和npm完全删除干净, 然后再重新安装, 最后成功解决了问题. 写这篇文总结一下, 以防日后再次遇到相同问题时抓瞎, 也给遇到相同问题的朋友一些帮助.<br><a id="more"></a></p>
-<h2 id="完全删除Node和NPM"><a href="#完全删除Node和NPM" class="headerlink" title="完全删除Node和NPM"></a>完全删除Node和NPM</h2><p>要手动删除的东西不少，原则就是将所有<strong>node</strong>, <strong>node_modules</strong>还有<strong>npm</strong>文件夹删光, 这些文件存放的地方如下: </p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在阅读各种jQuery插件的过程中经常会看到<code>this</code>和<code>call</code>, 那时我就知道这两个东西对我理解JS很重要。最近发现自己理解的好像还可以了, 但还是有的时候会感觉有点忘, 然后看了慕课上的一篇文章, 上面提到的记忆方法觉得对我很有用, 因此也就胆子大了一点, 写一篇小文, 权当再复习一遍, 同时与君共赏。 <a href="http://www.imooc.com/article/1758" target="_blank" rel="external">原文地址</a></p>
+<h3 id="需要理解的核心概念"><a href="#需要理解的核心概念" class="headerlink" title="需要理解的核心概念"></a>需要理解的核心概念</h3><ul>
+<li><p><strong>this的指向问题</strong>。调用函数的对象不同, 那么this的指向自然就不同。</p>
+</li>
+<li><p><strong>Function也是对象</strong>, 只要定义了一个函数, 它就会拥有一个<code>call()</code>方法，此方法存在于Function对象的<strong>原型对象</strong>中。</p>
+</li>
+<li><p><strong>函数执行时是在某个特定的上下文中执行</strong>，有点像我们平时说话的语境。</p>
+<a id="more"></a>
+</li>
+</ul>
+<h3 id="Function-prototype-call"><a href="#Function-prototype-call" class="headerlink" title="Function.prototype.call"></a>Function.prototype.call</h3><p>先看<code>call()</code>用法:</p>
+<pre><code>function say(msg) {
+    console.log(&quot;From &quot; + this + &quot;: Hello &quot; + msg);
+}
+say.call(&quot;Bob&quot;, &quot;World&quot;); // -&gt; From Bob: Hello World
+</code></pre><p>再分析一下<code>call()</code>执行时的步骤:</p>
 <ul>
-<li><code>/usr/local/lib</code></li>
-<li><code>/usr/local/include</code></li>
-<li><code>brew uninstall node</code>(如果用brew装的node)</li>
-<li>任何<code>/home</code>下的<code>local</code>或<code>lib</code>或<code>include</code> </li>
-<li><code>/usr/local/bin</code></li>
-<li><code>/usr/bin</code></li>
-<li><code>/usr/local/lib/dtrace/node.d</code></li>
-<li><code>/usr/local/share/man/man1/node.1</code></li>
-<li><code>/usr/local/share/systemtap/tapset/node.stp</code></li>
+<li>Step 1:  把第二参数到最后一个参数作为函数执行时要传入的参数</li>
+<li>Step 2:  把函数执行时的<code>this</code>指向第一个参数</li>
+<li>Step 3:  在上面这个特殊的上下文中执行函数</li>
 </ul>
-<p>删除的命令是<code>sudo rm -rf /dirName/</code><br>这些基本就是全部，不过不排除还有其他，各位可以根据系统给出的错误提示判断还有哪些需要删除.</p>
-<hr>
-<h2 id="重新安装Node和NPM"><a href="#重新安装Node和NPM" class="headerlink" title="重新安装Node和NPM"></a>重新安装Node和NPM</h2><ul>
-<li><a href="http://brew.sh" target="_blank" rel="external">http://brew.sh</a> 是homebrew的官网</li>
-<li><code>brew install node</code>会帮我们下载node，<code>brew link--overwrite node</code>会把node link过去, 这里我还遇到一个错误<code>/usr/local/share/systemtap/tapset is not writable</code>, 这个是权限的问题, 用<code>sudo chmod 775 /dirName/</code>的方法解决</li>
-<li><code>curl -L https://www.npmjs.com/install.sh | sh</code>是安装npm最方便快捷的方法，当然选择重新安装node官网上提供的dmg也是很好的，详情参考<a href="https://github.com/npm/npm" target="_blank" rel="external">官网</a></li>
+<p><strong>js执行函数时会默认完成以上3步</strong>, 你可以把直接调用函数理解为一种语法糖.如下：</p>
+<ul>
+<li><p>全局环境中:</p>
+<pre><code>`func(args) 等价于 func.call(window, args)`
+</code></pre></li>
+<li><p>当作对象的方法调用:</p>
+<pre><code>`obj.func(args) 等价于 obj.func.call(obj, args)`
+</code></pre></li>
 </ul>
-<hr>
-<h2 id="升级Node和NPM"><a href="#升级Node和NPM" class="headerlink" title="升级Node和NPM"></a>升级Node和NPM</h2><p><code>sudo npm install -g npm</code>升级npm<br>node更新不频繁, <code>sudo brew upgrade node</code>可以搞定升级</p>
+<h3 id="丢失的This"><a href="#丢失的This" class="headerlink" title="丢失的This"></a>丢失的This</h3><pre><code>var x = 10;
+var obj = {
+    x: 20,
+    f: function() {
+        console.log(this.x)
+        var foo = function() {
+            console.log(this.x)
+        }
+        foo();
+    }
+}
+obj.f(); // -&gt; 20 10
+</code></pre><p>这里的问题是, <code>obj.f</code>内部的<code>foo</code>被当作普通函数调用, 这时<code>this</code>指向了<code>window</code>, 而通常我们希望<code>this</code>指向<code>obj</code>。这里就有一个方法用来修正<code>this</code>的指向:</p>
+<pre><code>var x = 10;
+var obj = {
+    x: 20,
+    f: function() {
+        var that = this; // //使用that保留当前函数执行上下文的this
+        console.log(this.x)
+        var foo = function() {
+            console.log(that.x) // 此时foo函数中的this仍然指向window，但我们使用that取得obj
+        }
+        foo();
+    }
+}
+obj.f(); // -&gt; 20 20
+</code></pre><h3 id="构造函数中的This"><a href="#构造函数中的This" class="headerlink" title="构造函数中的This"></a>构造函数中的This</h3><pre><code>function Person(name) {
+    this.name = name;
+}
+var p1 = new Person(&apos;Xiaohu&apos;);
+</code></pre><p>上面这段在JS高程及各种JS书籍教程中屡见不鲜。这里我们来看一下为什么用了<code>new</code>关键字来调用构造函数创建对象时, 构造函数中<code>this</code>能够指向它扩展出的对象呢？</p>
+<pre><code>...
+
+var foo = (function(name){
+    var _newObj = {
+        constructor: Person,
+        _proto_: Person.prototype
+    };
+    _newObj.constructor(name); // 等价于_newObj.constructor.call(_newObj, name)
+    return _newObj;
+})();
+</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><strong>总结起来就是, 把函数调用<code>foo();</code>翻译成<code>foo.call();</code>的形式, 明确call的第一个参数, 即”谁”调用了这个函数, 就能明确this的指向。</strong></p>
+<ul>
+<li><p>全局环境中:</p>
+<pre><code>`func(args) 等价于 func.call(window, args)`
+</code></pre></li>
+<li><p>当作对象的方法调用:</p>
+<pre><code>`obj.func(args) 等价于 obj.func.call(obj, args)`
+</code></pre></li>
+</ul>
 
       
     </div>
@@ -354,9 +418,11 @@
       
         <div class="post-tags">
           
-            <a href="/blog/tags/node/" rel="tag">#node</a>
+            <a href="/blog/tags/JavaScript/" rel="tag">#JavaScript</a>
           
-            <a href="/blog/tags/npm/" rel="tag">#npm</a>
+            <a href="/blog/tags/this/" rel="tag">#this</a>
+          
+            <a href="/blog/tags/call/" rel="tag">#call</a>
           
         </div>
       
@@ -365,13 +431,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/blog/2015/10/23/sublime用法备忘/" rel="next" title="sublime用法备忘">
+                <i class="fa fa-chevron-left"></i> sublime用法备忘
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/blog/2015/10/23/sublime用法备忘/" rel="prev" title="sublime用法备忘">
-                sublime用法备忘 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -397,8 +463,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/10/09/安装NodeJS与NPM/"
-           data-title="安装NodeJS与NPM" data-url="http://xiaotian91.github.io/blog/2015/10/09/安装NodeJS与NPM/">
+      <div class="ds-thread" data-thread-key="2016/04/24/理解JS里让人抓狂的this/"
+           data-title="理解JS里让人抓狂的this" data-url="http://xiaotian91.github.io/blog/2016/04/24/理解JS里让人抓狂的this/">
       </div>
     
   </div>
@@ -491,7 +557,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完全删除Node和NPM"><span class="nav-number">2.</span> <span class="nav-text">完全删除Node和NPM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重新安装Node和NPM"><span class="nav-number">3.</span> <span class="nav-text">重新安装Node和NPM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#升级Node和NPM"><span class="nav-number">4.</span> <span class="nav-text">升级Node和NPM</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需要理解的核心概念"><span class="nav-number">2.</span> <span class="nav-text">需要理解的核心概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Function-prototype-call"><span class="nav-number">3.</span> <span class="nav-text">Function.prototype.call</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#丢失的This"><span class="nav-number">4.</span> <span class="nav-text">丢失的This</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数中的This"><span class="nav-number">5.</span> <span class="nav-text">构造函数中的This</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
           </div>
         </section>
