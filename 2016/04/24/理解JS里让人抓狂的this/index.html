@@ -90,7 +90,7 @@ this的指向问题。调用函数的对象不同, 那么this的指">
 <meta property="og:description" content="前言在阅读各种jQuery插件的过程中经常会看到this和call, 那时我就知道这两个东西对我理解JS很重要。最近发现自己理解的好像还可以了, 但还是有的时候会感觉有点忘, 然后看了慕课上的一篇文章, 上面提到的记忆方法觉得对我很有用, 因此也就胆子大了一点, 写一篇小文, 权当再复习一遍, 同时与君共赏。 原文地址
 需要理解的核心概念
 this的指向问题。调用函数的对象不同, 那么this的指">
-<meta property="og:updated_time" content="2016-04-24T07:59:44.000Z">
+<meta property="og:updated_time" content="2016-04-24T09:50:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解JS里让人抓狂的this">
 <meta name="twitter:description" content="前言在阅读各种jQuery插件的过程中经常会看到this和call, 那时我就知道这两个东西对我理解JS很重要。最近发现自己理解的好像还可以了, 但还是有的时候会感觉有点忘, 然后看了慕课上的一篇文章, 上面提到的记忆方法觉得对我很有用, 因此也就胆子大了一点, 写一篇小文, 权当再复习一遍, 同时与君共赏。 原文地址
@@ -389,7 +389,32 @@ var foo = (function(name){
     _newObj.constructor(name); // 等价于_newObj.constructor.call(_newObj, name)
     return _newObj;
 })();
-</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><strong>总结起来就是, 把函数调用<code>foo();</code>翻译成<code>foo.call();</code>的形式, 明确call的第一个参数, 即”谁”调用了这个函数, 就能明确this的指向。</strong></p>
+</code></pre><h3 id="jQuery插件中的This"><a href="#jQuery插件中的This" class="headerlink" title="jQuery插件中的This"></a>jQuery插件中的This</h3><p>这里截取了一段真实的jQ插件代码, 直接体现了this在不同的上下文中指向的不同。</p>
+<pre><code>$.fn.readmore = function(options) {
+    var selector = this.selector;
+    options = options || {}
+    if (typeof options === &apos;object&apos;) {
+        return this.each(function(){
+            ...
+            options.selector = selector;
+            $.data(this,&apos;plugin_&apos; + readmore, new Readmore(this, options));
+        })
+
+    }
+}
+</code></pre><p>代码第二行的<code>this</code>指向了传入的<strong>jQuery对象</strong>, 而在each函数体的内部的<code>this</code>指向的其实是每个被选中的<strong>DOM元素</strong>。</p>
+<pre><code>Readmore.prototype = {
+    init: function() {
+        var current = $(this.elem);
+        current.data({ // 储存数据
+            defaultHeight: this.options.collapsedHeight, // 默认高度200px
+            heightMargin: this.options.heightMargin
+        });
+    },
+    ...
+}
+</code></pre><p>因此在构造函数的内部需要将DOM元素重新转换为jQuery对象, 才能使用像attr()，data()等jQuery方法。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><strong>总结起来就是, 把函数调用<code>foo();</code>翻译成<code>foo.call();</code>的形式, 明确call的第一个参数, 即”谁”调用了这个函数, 就能明确this的指向。</strong></p>
 <ul>
 <li><p>全局环境中:</p>
 <pre><code>`func(args) 等价于 func.call(window, args)`
@@ -557,7 +582,7 @@ var foo = (function(name){
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需要理解的核心概念"><span class="nav-number">2.</span> <span class="nav-text">需要理解的核心概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Function-prototype-call"><span class="nav-number">3.</span> <span class="nav-text">Function.prototype.call</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#丢失的This"><span class="nav-number">4.</span> <span class="nav-text">丢失的This</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数中的This"><span class="nav-number">5.</span> <span class="nav-text">构造函数中的This</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需要理解的核心概念"><span class="nav-number">2.</span> <span class="nav-text">需要理解的核心概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Function-prototype-call"><span class="nav-number">3.</span> <span class="nav-text">Function.prototype.call</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#丢失的This"><span class="nav-number">4.</span> <span class="nav-text">丢失的This</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数中的This"><span class="nav-number">5.</span> <span class="nav-text">构造函数中的This</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery插件中的This"><span class="nav-number">6.</span> <span class="nav-text">jQuery插件中的This</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
           </div>
         </section>
