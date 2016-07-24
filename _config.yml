@@ -4,8 +4,8 @@
 
 # 博客名称
 title: Q中了膝盖's Blog
-subtitle: 专注于Web前端 坚信万物守恒 厚积薄发
-description: 专注于Web前端 坚信万物守恒 厚积薄发
+subtitle: 自己选的路再苦也得走完
+description: JSer OP一生推 最近通过攻壳机动队开始憧憬2030年的世界 
 author: Xiaotian Li
 language: zh-Hans
 timezone:
@@ -34,7 +34,7 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
