@@ -80,22 +80,16 @@
 
 
 
-<meta name="description" content="前言本文可视作《JavaScript设计模式与开发实践》第一部分第一章和《JavaScript高级程序设计》第六章的学习笔记。简单概括了JavaScript面向对象的三大核心概念（多态，封装，继承）背后的核心思想。 
-鸭子类型 Duck Typing
-从前在JavaScript王国里，有一个国王，他觉得世界上最美妙的声音就是鸭子的叫声，于是国王召集大臣，要组建一个1000只鸭子组成的合唱团。大臣们">
+<meta name="description" content="&amp;#x524D;&amp;#x8A00;&amp;#x672C;&amp;#x6587;&amp;#x53EF;&amp;#x89C6;&amp;#x4F5C;&amp;#x300A;JavaScript&amp;#x8BBE;&amp;#x8BA1;&amp;#x6A21;&amp;#x5F0F;&amp;#x4E0E;&amp;#x5F00;&amp;#x53D1;&amp;#x5B9E;&amp;#x8DF5;&amp;#x300B;&amp;#x7B2C;&amp;#x4E00;&amp;#x90E8;&amp;#x5206;&amp;#x7B2C;&amp;#x4E0">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面向对象的JavaScript核心概念小结">
 <meta property="og:url" content="http://xiaotian91.github.io/2016/04/18/面向对象的JavaScript核心概念小结/index.html">
 <meta property="og:site_name" content="Q中了膝盖's Blog">
-<meta property="og:description" content="前言本文可视作《JavaScript设计模式与开发实践》第一部分第一章和《JavaScript高级程序设计》第六章的学习笔记。简单概括了JavaScript面向对象的三大核心概念（多态，封装，继承）背后的核心思想。 
-鸭子类型 Duck Typing
-从前在JavaScript王国里，有一个国王，他觉得世界上最美妙的声音就是鸭子的叫声，于是国王召集大臣，要组建一个1000只鸭子组成的合唱团。大臣们">
+<meta property="og:description" content="&amp;#x524D;&amp;#x8A00;&amp;#x672C;&amp;#x6587;&amp;#x53EF;&amp;#x89C6;&amp;#x4F5C;&amp;#x300A;JavaScript&amp;#x8BBE;&amp;#x8BA1;&amp;#x6A21;&amp;#x5F0F;&amp;#x4E0E;&amp;#x5F00;&amp;#x53D1;&amp;#x5B9E;&amp;#x8DF5;&amp;#x300B;&amp;#x7B2C;&amp;#x4E00;&amp;#x90E8;&amp;#x5206;&amp;#x7B2C;&amp;#x4E0">
 <meta property="og:updated_time" content="2016-05-01T08:24:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面向对象的JavaScript核心概念小结">
-<meta name="twitter:description" content="前言本文可视作《JavaScript设计模式与开发实践》第一部分第一章和《JavaScript高级程序设计》第六章的学习笔记。简单概括了JavaScript面向对象的三大核心概念（多态，封装，继承）背后的核心思想。 
-鸭子类型 Duck Typing
-从前在JavaScript王国里，有一个国王，他觉得世界上最美妙的声音就是鸭子的叫声，于是国王召集大臣，要组建一个1000只鸭子组成的合唱团。大臣们">
+<meta name="twitter:description" content="&amp;#x524D;&amp;#x8A00;&amp;#x672C;&amp;#x6587;&amp;#x53EF;&amp;#x89C6;&amp;#x4F5C;&amp;#x300A;JavaScript&amp;#x8BBE;&amp;#x8BA1;&amp;#x6A21;&amp;#x5F0F;&amp;#x4E0E;&amp;#x5F00;&amp;#x53D1;&amp;#x5B9E;&amp;#x8DF5;&amp;#x300B;&amp;#x7B2C;&amp;#x4E00;&amp;#x90E8;&amp;#x5206;&amp;#x7B2C;&amp;#x4E0">
 
 
 
@@ -318,15 +312,15 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文可视作《JavaScript设计模式与开发实践》第一部分第一章和《JavaScript高级程序设计》第六章的学习笔记。简单概括了JavaScript面向对象的三大核心概念（多态，封装，继承）背后的核心思想。 </p>
-<h2 id="鸭子类型-Duck-Typing"><a href="#鸭子类型-Duck-Typing" class="headerlink" title="鸭子类型 Duck Typing"></a>鸭子类型 Duck Typing</h2><blockquote>
-<p>从前在JavaScript王国里，有一个国王，他觉得世界上最美妙的声音就是鸭子的叫声，于是国王召集大臣，要组建一个1000只鸭子组成的合唱团。大臣们找遍了全国，终于找到999只鸭子，但是始终还差一只，最后大臣发现有一只非常特别的鸡，它的叫声跟鸭子一模一样，于是这只鸡就成为了合唱团的最后一员。</p>
+        <h2 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h2><p>&#x672C;&#x6587;&#x53EF;&#x89C6;&#x4F5C;&#x300A;JavaScript&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x4E0E;&#x5F00;&#x53D1;&#x5B9E;&#x8DF5;&#x300B;&#x7B2C;&#x4E00;&#x90E8;&#x5206;&#x7B2C;&#x4E00;&#x7AE0;&#x548C;&#x300A;JavaScript&#x9AD8;&#x7EA7;&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#x300B;&#x7B2C;&#x516D;&#x7AE0;&#x7684;&#x5B66;&#x4E60;&#x7B14;&#x8BB0;&#x3002;&#x7B80;&#x5355;&#x6982;&#x62EC;&#x4E86;JavaScript&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7684;&#x4E09;&#x5927;&#x6838;&#x5FC3;&#x6982;&#x5FF5;&#xFF08;&#x591A;&#x6001;&#xFF0C;&#x5C01;&#x88C5;&#xFF0C;&#x7EE7;&#x627F;&#xFF09;&#x80CC;&#x540E;&#x7684;&#x6838;&#x5FC3;&#x601D;&#x60F3;&#x3002; </p>
+<h2 id="&#x9E2D;&#x5B50;&#x7C7B;&#x578B;-Duck-Typing"><a href="#&#x9E2D;&#x5B50;&#x7C7B;&#x578B;-Duck-Typing" class="headerlink" title="&#x9E2D;&#x5B50;&#x7C7B;&#x578B; Duck Typing"></a>&#x9E2D;&#x5B50;&#x7C7B;&#x578B; Duck Typing</h2><blockquote>
+<p>&#x4ECE;&#x524D;&#x5728;JavaScript&#x738B;&#x56FD;&#x91CC;&#xFF0C;&#x6709;&#x4E00;&#x4E2A;&#x56FD;&#x738B;&#xFF0C;&#x4ED6;&#x89C9;&#x5F97;&#x4E16;&#x754C;&#x4E0A;&#x6700;&#x7F8E;&#x5999;&#x7684;&#x58F0;&#x97F3;&#x5C31;&#x662F;&#x9E2D;&#x5B50;&#x7684;&#x53EB;&#x58F0;&#xFF0C;&#x4E8E;&#x662F;&#x56FD;&#x738B;&#x53EC;&#x96C6;&#x5927;&#x81E3;&#xFF0C;&#x8981;&#x7EC4;&#x5EFA;&#x4E00;&#x4E2A;1000&#x53EA;&#x9E2D;&#x5B50;&#x7EC4;&#x6210;&#x7684;&#x5408;&#x5531;&#x56E2;&#x3002;&#x5927;&#x81E3;&#x4EEC;&#x627E;&#x904D;&#x4E86;&#x5168;&#x56FD;&#xFF0C;&#x7EC8;&#x4E8E;&#x627E;&#x5230;999&#x53EA;&#x9E2D;&#x5B50;&#xFF0C;&#x4F46;&#x662F;&#x59CB;&#x7EC8;&#x8FD8;&#x5DEE;&#x4E00;&#x53EA;&#xFF0C;&#x6700;&#x540E;&#x5927;&#x81E3;&#x53D1;&#x73B0;&#x6709;&#x4E00;&#x53EA;&#x975E;&#x5E38;&#x7279;&#x522B;&#x7684;&#x9E21;&#xFF0C;&#x5B83;&#x7684;&#x53EB;&#x58F0;&#x8DDF;&#x9E2D;&#x5B50;&#x4E00;&#x6A21;&#x4E00;&#x6837;&#xFF0C;&#x4E8E;&#x662F;&#x8FD9;&#x53EA;&#x9E21;&#x5C31;&#x6210;&#x4E3A;&#x4E86;&#x5408;&#x5531;&#x56E2;&#x7684;&#x6700;&#x540E;&#x4E00;&#x5458;&#x3002;</p>
 </blockquote>
-<p>这个故事形象地暗示了鸭子类型的核心思想，<strong>只关注对象的行为（鸭子的叫声），而不关注对象本身（是鸭还是鸡）</strong>。<br><a id="more"></a><br>    var joinChoir = function(animal) {<br>        if (animal &amp;&amp; typeof animal.duckSinging === ‘function’ )<br>        …<br>    }</p>
-<h2 id="多态-Polymorphism"><a href="#多态-Polymorphism" class="headerlink" title="多态 Polymorphism"></a>多态 Polymorphism</h2><blockquote>
-<p>在电影的拍摄现场，当导演喊出“action”时，主角开始背台词，照明时负责打灯光，后面的群众演员假装中枪倒地，道具师往镜头里撒上雪花。在得到同一个消息时，每个对象都知道自己应该做什么。</p>
+<p>&#x8FD9;&#x4E2A;&#x6545;&#x4E8B;&#x5F62;&#x8C61;&#x5730;&#x6697;&#x793A;&#x4E86;&#x9E2D;&#x5B50;&#x7C7B;&#x578B;&#x7684;&#x6838;&#x5FC3;&#x601D;&#x60F3;&#xFF0C;<strong>&#x53EA;&#x5173;&#x6CE8;&#x5BF9;&#x8C61;&#x7684;&#x884C;&#x4E3A;&#xFF08;&#x9E2D;&#x5B50;&#x7684;&#x53EB;&#x58F0;&#xFF09;&#xFF0C;&#x800C;&#x4E0D;&#x5173;&#x6CE8;&#x5BF9;&#x8C61;&#x672C;&#x8EAB;&#xFF08;&#x662F;&#x9E2D;&#x8FD8;&#x662F;&#x9E21;&#xFF09;</strong>&#x3002;<br><a id="more"></a><br>    var joinChoir = function(animal) {<br>        if (animal &amp;&amp; typeof animal.duckSinging === &#x2018;function&#x2019; )<br>        &#x2026;<br>    }</p>
+<h2 id="&#x591A;&#x6001;-Polymorphism"><a href="#&#x591A;&#x6001;-Polymorphism" class="headerlink" title="&#x591A;&#x6001; Polymorphism"></a>&#x591A;&#x6001; Polymorphism</h2><blockquote>
+<p>&#x5728;&#x7535;&#x5F71;&#x7684;&#x62CD;&#x6444;&#x73B0;&#x573A;&#xFF0C;&#x5F53;&#x5BFC;&#x6F14;&#x558A;&#x51FA;&#x201C;action&#x201D;&#x65F6;&#xFF0C;&#x4E3B;&#x89D2;&#x5F00;&#x59CB;&#x80CC;&#x53F0;&#x8BCD;&#xFF0C;&#x7167;&#x660E;&#x65F6;&#x8D1F;&#x8D23;&#x6253;&#x706F;&#x5149;&#xFF0C;&#x540E;&#x9762;&#x7684;&#x7FA4;&#x4F17;&#x6F14;&#x5458;&#x5047;&#x88C5;&#x4E2D;&#x67AA;&#x5012;&#x5730;&#xFF0C;&#x9053;&#x5177;&#x5E08;&#x5F80;&#x955C;&#x5934;&#x91CC;&#x6492;&#x4E0A;&#x96EA;&#x82B1;&#x3002;&#x5728;&#x5F97;&#x5230;&#x540C;&#x4E00;&#x4E2A;&#x6D88;&#x606F;&#x65F6;&#xFF0C;&#x6BCF;&#x4E2A;&#x5BF9;&#x8C61;&#x90FD;&#x77E5;&#x9053;&#x81EA;&#x5DF1;&#x5E94;&#x8BE5;&#x505A;&#x4EC0;&#x4E48;&#x3002;</p>
 </blockquote>
-<p>这个故事形象地暗示了多态性的核心思想，<strong>将“做什么”（导演喊action）和“谁去做以及怎样去做”（各剧组成员各自调用自己的方法）分离</strong>。</p>
+<p>&#x8FD9;&#x4E2A;&#x6545;&#x4E8B;&#x5F62;&#x8C61;&#x5730;&#x6697;&#x793A;&#x4E86;&#x591A;&#x6001;&#x6027;&#x7684;&#x6838;&#x5FC3;&#x601D;&#x60F3;&#xFF0C;<strong>&#x5C06;&#x201C;&#x505A;&#x4EC0;&#x4E48;&#x201D;&#xFF08;&#x5BFC;&#x6F14;&#x558A;action&#xFF09;&#x548C;&#x201C;&#x8C01;&#x53BB;&#x505A;&#x4EE5;&#x53CA;&#x600E;&#x6837;&#x53BB;&#x505A;&#x201D;&#xFF08;&#x5404;&#x5267;&#x7EC4;&#x6210;&#x5458;&#x5404;&#x81EA;&#x8C03;&#x7528;&#x81EA;&#x5DF1;&#x7684;&#x65B9;&#x6CD5;&#xFF09;&#x5206;&#x79BB;</strong>&#x3002;</p>
 <pre><code>var action = function(member) {
     if (member &amp;&amp; typeof member.action === &apos;function&apos;) {
         member.action();
@@ -335,22 +329,22 @@
 
 var actor = {
     action: function() {
-        console.log(&apos;主角开始背台词&apos;);
+        console.log(&apos;&#x4E3B;&#x89D2;&#x5F00;&#x59CB;&#x80CC;&#x53F0;&#x8BCD;&apos;);
     }
 }
 
 var lighter = {
     action: function() {
-        console.log(&apos;灯光师开始布光&apos;);
+        console.log(&apos;&#x706F;&#x5149;&#x5E08;&#x5F00;&#x59CB;&#x5E03;&#x5149;&apos;);
     } 
 }
-</code></pre><h2 id="封装-Encapsulation"><a href="#封装-Encapsulation" class="headerlink" title="封装 Encapsulation"></a>封装 Encapsulation</h2><blockquote>
-<p>一台榨汁机上的“开始榨汁”按钮就可以被视作一个“接口”，我们并不关心榨汁机内部接收到“开始榨汁”这一命令后是怎样工作的，我们只是调用“开始榨汁”这一方法，得到一杯新鲜的橙汁。</p>
+</code></pre><h2 id="&#x5C01;&#x88C5;-Encapsulation"><a href="#&#x5C01;&#x88C5;-Encapsulation" class="headerlink" title="&#x5C01;&#x88C5; Encapsulation"></a>&#x5C01;&#x88C5; Encapsulation</h2><blockquote>
+<p>&#x4E00;&#x53F0;&#x69A8;&#x6C41;&#x673A;&#x4E0A;&#x7684;&#x201C;&#x5F00;&#x59CB;&#x69A8;&#x6C41;&#x201D;&#x6309;&#x94AE;&#x5C31;&#x53EF;&#x4EE5;&#x88AB;&#x89C6;&#x4F5C;&#x4E00;&#x4E2A;&#x201C;&#x63A5;&#x53E3;&#x201D;&#xFF0C;&#x6211;&#x4EEC;&#x5E76;&#x4E0D;&#x5173;&#x5FC3;&#x69A8;&#x6C41;&#x673A;&#x5185;&#x90E8;&#x63A5;&#x6536;&#x5230;&#x201C;&#x5F00;&#x59CB;&#x69A8;&#x6C41;&#x201D;&#x8FD9;&#x4E00;&#x547D;&#x4EE4;&#x540E;&#x662F;&#x600E;&#x6837;&#x5DE5;&#x4F5C;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x662F;&#x8C03;&#x7528;&#x201C;&#x5F00;&#x59CB;&#x69A8;&#x6C41;&#x201D;&#x8FD9;&#x4E00;&#x65B9;&#x6CD5;&#xFF0C;&#x5F97;&#x5230;&#x4E00;&#x676F;&#x65B0;&#x9C9C;&#x7684;&#x6A59;&#x6C41;&#x3002;</p>
 </blockquote>
-<p><strong>封装不仅仅是隐藏数据，还包括隐藏实现细节、设计细节以及隐藏对象的类型等</strong>。</p>
-<p>JavaScript中只能依赖变量的作用域来实现<strong>数据封装</strong>，而且只能模拟出<code>public</code>和<code>private</code>这2种封装性。</p>
+<p><strong>&#x5C01;&#x88C5;&#x4E0D;&#x4EC5;&#x4EC5;&#x662F;&#x9690;&#x85CF;&#x6570;&#x636E;&#xFF0C;&#x8FD8;&#x5305;&#x62EC;&#x9690;&#x85CF;&#x5B9E;&#x73B0;&#x7EC6;&#x8282;&#x3001;&#x8BBE;&#x8BA1;&#x7EC6;&#x8282;&#x4EE5;&#x53CA;&#x9690;&#x85CF;&#x5BF9;&#x8C61;&#x7684;&#x7C7B;&#x578B;&#x7B49;</strong>&#x3002;</p>
+<p>JavaScript&#x4E2D;&#x53EA;&#x80FD;&#x4F9D;&#x8D56;&#x53D8;&#x91CF;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x6765;&#x5B9E;&#x73B0;<strong>&#x6570;&#x636E;&#x5C01;&#x88C5;</strong>&#xFF0C;&#x800C;&#x4E14;&#x53EA;&#x80FD;&#x6A21;&#x62DF;&#x51FA;<code>public</code>&#x548C;<code>private</code>&#x8FD9;2&#x79CD;&#x5C01;&#x88C5;&#x6027;&#x3002;</p>
 <pre><code>var obj = (function(){
-    var _name = &apos;赵本山&apos;; // private
+    var _name = &apos;&#x8D75;&#x672C;&#x5C71;&apos;; // private
     return {
         getName: function() { // public
             return _name;
@@ -358,26 +352,26 @@ var lighter = {
     } 
 })();
 
-console.log(obj.getName()); // -&gt; 赵本山
+console.log(obj.getName()); // -&gt; &#x8D75;&#x672C;&#x5C71;
 console.log(obj._name); // -&gt; undefined
-</code></pre><h2 id="继承-Inheritance"><a href="#继承-Inheritance" class="headerlink" title="继承 Inheritance"></a>继承 Inheritance</h2><blockquote>
-<p>正如每个吸血鬼都有一个吸血鬼祖先, 所有JavaScript对象都有一个共同祖先，那就是<code>Object.prototype</code></p>
+</code></pre><h2 id="&#x7EE7;&#x627F;-Inheritance"><a href="#&#x7EE7;&#x627F;-Inheritance" class="headerlink" title="&#x7EE7;&#x627F; Inheritance"></a>&#x7EE7;&#x627F; Inheritance</h2><blockquote>
+<p>&#x6B63;&#x5982;&#x6BCF;&#x4E2A;&#x5438;&#x8840;&#x9B3C;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x5438;&#x8840;&#x9B3C;&#x7956;&#x5148;, &#x6240;&#x6709;JavaScript&#x5BF9;&#x8C61;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x5171;&#x540C;&#x7956;&#x5148;&#xFF0C;&#x90A3;&#x5C31;&#x662F;<code>Object.prototype</code></p>
 </blockquote>
-<p>我们来还原一下 <code>var obj = new Person(&#39;Cool&#39;);</code>创建对象的过程。 </p>
-<pre><code>... 省略Person构造函数
+<p>&#x6211;&#x4EEC;&#x6765;&#x8FD8;&#x539F;&#x4E00;&#x4E0B; <code>var obj = new Person(&apos;Cool&apos;);</code>&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#x7684;&#x8FC7;&#x7A0B;&#x3002; </p>
+<pre><code>... &#x7701;&#x7565;Person&#x6784;&#x9020;&#x51FD;&#x6570;
 
 var objFactory = function() {
-    var obj = new Object(), // 从Object.prototype上克隆一个空的对象
-        Constructor = [].shift.call(arguments); // 取得构造函数
-    obj.__proto__ = Constructor.prototype; // 指向构造器的原型，而不是Object.prototype
-    var ret = Constructor.apply(obj,arguments); // 调用构造器创建对象并设置属性
+    var obj = new Object(), // &#x4ECE;Object.prototype&#x4E0A;&#x514B;&#x9686;&#x4E00;&#x4E2A;&#x7A7A;&#x7684;&#x5BF9;&#x8C61;
+        Constructor = [].shift.call(arguments); // &#x53D6;&#x5F97;&#x6784;&#x9020;&#x51FD;&#x6570;
+    obj.__proto__ = Constructor.prototype; // &#x6307;&#x5411;&#x6784;&#x9020;&#x5668;&#x7684;&#x539F;&#x578B;&#xFF0C;&#x800C;&#x4E0D;&#x662F;Object.prototype
+    var ret = Constructor.apply(obj,arguments); // &#x8C03;&#x7528;&#x6784;&#x9020;&#x5668;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#x5E76;&#x8BBE;&#x7F6E;&#x5C5E;&#x6027;
 
     return typeof ret === &apos;object&apos; ? ret : obj;
 }
 
 console.log(objFactory(Person, &apos;Cool&apos;)) 
 </code></pre><hr>
-<p>我们来看一下<strong>寄生组合式继承</strong>, 该例明确地表明了JavaScript继承的核心思想是，将<strong>构造函数的原型指向另一构造函数的原型，实现原型委托继承</strong>。</p>
+<p>&#x6211;&#x4EEC;&#x6765;&#x770B;&#x4E00;&#x4E0B;<strong>&#x5BC4;&#x751F;&#x7EC4;&#x5408;&#x5F0F;&#x7EE7;&#x627F;</strong>, &#x8BE5;&#x4F8B;&#x660E;&#x786E;&#x5730;&#x8868;&#x660E;&#x4E86;JavaScript&#x7EE7;&#x627F;&#x7684;&#x6838;&#x5FC3;&#x601D;&#x60F3;&#x662F;&#xFF0C;&#x5C06;<strong>&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x539F;&#x578B;&#x6307;&#x5411;&#x53E6;&#x4E00;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x539F;&#x578B;&#xFF0C;&#x5B9E;&#x73B0;&#x539F;&#x578B;&#x59D4;&#x6258;&#x7EE7;&#x627F;</strong>&#x3002;</p>
 <pre><code>function SuperType(name) {
     this.name = name;
 }
@@ -397,9 +391,9 @@ function inheritPrototype(subType, superType) {
     subType.prototype = prototype;
 }
 </code></pre><ul>
-<li><code>SuperType.call(this, name)</code> 借调SuperType构造函数创建对象并设置属性</li>
-<li><code>var portotype = Object(superType.prototype); subType.prototype = prototype;</code> 继承SuperType构造函数的原型对象</li>
-<li><code>prototype.constructor = subType;</code> 将constructor指向正确的构造函数</li>
+<li><code>SuperType.call(this, name)</code> &#x501F;&#x8C03;SuperType&#x6784;&#x9020;&#x51FD;&#x6570;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#x5E76;&#x8BBE;&#x7F6E;&#x5C5E;&#x6027;</li>
+<li><code>var portotype = Object(superType.prototype); subType.prototype = prototype;</code> &#x7EE7;&#x627F;SuperType&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;</li>
+<li><code>prototype.constructor = subType;</code> &#x5C06;constructor&#x6307;&#x5411;&#x6B63;&#x786E;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;</li>
 </ul>
 
       
@@ -514,7 +508,7 @@ function inheritPrototype(subType, superType) {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -522,7 +516,7 @@ function inheritPrototype(subType, superType) {
           
             <div class="site-state-item site-state-categories">
               <a href="/blog/categories">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -531,7 +525,7 @@ function inheritPrototype(subType, superType) {
           
             <div class="site-state-item site-state-tags">
               <a href="/blog/tags">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
